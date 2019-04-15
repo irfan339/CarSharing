@@ -1,99 +1,183 @@
+<?php
+session_start();
+include('connection.php');
+
+//logout
+include('logout.php');
+
+//remember me
+include('remember.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Car Sharing</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Sharing Website Final</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="styling.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAZnZGXEbx0e_A9XJc20PW7c1mErzzjD_I"> </script>
+      <style>
+          /*margin top for myContainer*/
+          #myContainer {
+              margin-top: 50px;
+              text-align: center;
+              color: black;
+          }
+          
+          /*header size*/
+          #myContainer h1{
+              font-size: 5em;
+          }
+          
+          .bold{
+              font-weight: bold;
+          }
+          #googleMap{
+              width: 100%;
+              height: 30vh;
+              margin: 10px auto;
+          }
+          .signup{
+              margin-top: 20px;
+          }
+          #spinner{
+              display: none;
+              position: fixed;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              right: 0;
+              height: 85px;
+              text-align: center;
+              margin: auto;
+              z-index: 1100;
+          }
+          #results{
+            margin-bottom: 100px;   
+          }
+          .driver{
+            font-size:1.5em;
+            text-transform:capitalize;
+            text-align: center;
+          }
+          .price{
+            font-size:1.5em;
+          }
+          .departure, .destination{
+            font-size:1.5em;
+          }
+          .perseat{
+            font-size:0.5em;
+          }
+          .journey{
+            text-align:left; 
+          }
+          .journey2{
+            text-align:right; 
+          }
+          .time{
+            margin-top:10px;  
+          }
+          .telephone{
+            margin-top:10px;
+          }
+          .seatsavailable{
+            font-size:0.7em; 
+            margin-top:5px;
+          }
+          .moreinfo{
+            text-align:left; 
+          }
+          .aboutme{
+            border-top:1px solid grey;
+            margin-top:15px;
+            padding-top:5px;
+          }
+          #message{
+            margin-top:20px;
+          }
+          .journeysummary{
+            text-align:left; 
+            font-size:1.5em;
+          }
+          .noresults{
+            text-align:center;  
+            font-size:1.5em;
+          }
+          
+          .previewing{
+              max-width: 100%;
+              height: auto;
+              border-radius: 50%;
+          }
+          .previewing2{
+              margin: auto;
+              height: 20px;
+              border-radius: 50%;
+          }
+          
+      
+      </style>
+  </head>
+  <body>
+    <!--Navigation Bar-->  
+    <?php
+    if(isset($_SESSION["user_id"]) && !empty($_SESSION['user_id']) ){
+        include("mainpageloggedin.php");
+    }else{
+        include("navigationbarnotconnected.php");
+    }  
+    ?>
     
-
-  <!-- Custom styles for this template -->
-  <link href="styling.css" rel="stylesheet">
-      
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-<nav role="navigation" class="navbar navbar-custom navbar-expand-lg navbar-fixed-top">
-      
-          <div class="container-fluid">
-            
-              <div class="navbar-header">
-              
-                  <a class="navbar-brand">Car Sharing</a>
-                  <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
+      <div class="container-fluid" id="myContainer">
+          <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                  <h1>Plan your next trip now!</h1>
+                  <p class="lead">Save Money! Save the Environment!</p>
+                  <p class="bold">You can save up to 3000$ a year using car sharing!
+                  </p>
+                  <!--Search Form-->
+                  <form class="form-inline" method="get" id="searchform">
+                      <div class="form-group">
+                          <label class="sr-only" for="departure">Departure:</label>
+                          <input type="text" class="form-control" id="departure" placeholder="Departure" name="departure">
+                      </div>
+                      <div class="form-group">
+                          <label class="sr-only"></label>
+                          <input type="text" class="form-control" id="destination" placeholder="Destination" name="destination">
+                      </div>
+                      <input type="submit" value="Search" class="btn btn-lg green" name="search">
                   
-                  </button>
-              </div>
-              <div class="navbar-collapse collapse" id="navbarCollapse">
-                  <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact us</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#signupModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-                    <li><a href="#loginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-                  </ul>
+                  </form>
+                  <!--Search Form End-->
+                  
+                  <!--Google Map-->
+                  <div id="googleMap"></div>
+                  
+                  <!--Sign up button-->
+                  <?php
+                  if(!isset($_SESSION["user_id"])){
+                      echo '<button type="button" class="btn btn-lg green signup" data-toggle="modal" data-target="#signupModal">Sign up-It\'s free</button>';
+                  }
+                  ?>
+                  <div id="results">
+                    <!--will be filled with Ajax Call-->
+                </div>
               
               </div>
+          
           </div>
       
-      </nav>
-    
-    
-    <!------------Search Form--------->
-    
-  <div class="container-fluid" id="mycontainer">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-            <h1 class="myheading"> Plan your next trip now!</h1>
-                <p class="save">Save Money! Save the Environment!</p>
-                 <!-----Search Form--->
-           <form class="form-inline justify-content-center" method="get" id="searchfrorm">
-                        <div class="form-group ">
-                        <label class="sr-only" for="departure">Departure:</label>
-                        <input type="text" placeholder="Departure" name="departure" id="departure">
-                        </div>
-                    &nbsp;
-                    <div class="form-group ">
-                        <label class="sr-only" for="destination">Destination:</label>
-                        <input type="text" placeholder="Destination" name="destination" id="destination">
-                        </div>
-                    &nbsp;
-                    <input type="submit" value="Search" class=" btn btn-warning" name="search">
-                </form>
-                
-                
-                <!-----Google map-->
-                
-                <div id="map">
-                </div>
-            </div>
-        </div> 
-    </div>  
-    
-    <!-------------Loginform------------>
-    
-     <form method="post" id="loginform">
+      </div>
+
+    <!--Login form-->    
+      <form method="post" id="loginform">
         <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -131,11 +215,11 @@
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn btn-warning" name="login" type="submit" value="Login">
+                  <input class="btn green" name="login" type="submit" value="Login">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
-                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
                   Register
                 </button>  
               </div>
@@ -144,23 +228,20 @@
       </div>
       </form>
 
-    
-    
-    <!-----------------SignUp Form----------------->
-    
-    <form method="post" id="signupform">
-    <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-       <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                 <button class="close" data-dismiss="modal">
+    <!--Sign up form--> 
+      <form method="post" id="signupform">
+        <div class="modal" id="signupModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close" data-dismiss="modal">
                     &times;
                   </button>
-                 <h4 id="myModalLabel">
-                    Sign up today and Start using our App! 
+                  <h4 id="myModalLabel">
+                    Sign up today and Start using our Online Notes App! 
                   </h4>
-                </div>
-                 <div class="modal-body">
+              </div>
+              <div class="modal-body">
                   
                   <!--Sign up message from PHP file-->
                   <div id="signupmessage"></div>
@@ -191,7 +272,7 @@
                   </div>
                   <div class="form-group">
                       <label for="phonenumber" class="sr-only">Telephone:</label>
-                      <input class="form-control" type="text" name="phonenumber" id="phonenumber" placeholder="Mobile Number" maxlength="15">
+                      <input class="form-control" type="text" name="phonenumber" id="phonenumber" placeholder="Telephone Number" maxlength="15">
                   </div>
                   <div class="form-group">
                       <label><input type="radio" name="gender" id="male" value="male">Male</label>
@@ -202,22 +283,19 @@
                       <textarea name="moreinformation" class="form-control" rows="5" maxlength="300"></textarea>
                   </div>
               </div>
-                 <div class="modal-footer">
-                  <input class="btn btn-warning" name="signup" type="submit" value="Sign up">
+              <div class="modal-footer">
+                  <input class="btn green" name="signup" type="submit" value="Sign up">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
               </div>
-        </div>
-        </div>
-         </div>
- </form>
-    
-    
-    
-<!--------------Forgot Password Form------------->
-    
-     <form method="post" id="forgotpasswordform">
+          </div>
+      </div>
+      </div>
+      </form>
+
+    <!--Forgot password form-->
+      <form method="post" id="forgotpasswordform">
         <div class="modal" id="forgotpasswordModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -241,11 +319,11 @@
                   </div>
               </div>
               <div class="modal-footer">
-                  <input class="btn btn-warning" name="forgotpassword" type="submit" value="Submit">
+                  <input class="btn green" name="forgotpassword" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
-                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
                   Register
                 </button>  
               </div>
@@ -253,33 +331,22 @@
       </div>
       </div>
       </form>
-    
-<!-------Footer------>    
-    
-<footer class="footerclass">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy;Car Sharing 2019</p>
-        </div>
-    </footer>
-
-
-      <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 12.972442, lng: 77.580643};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 10, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZnZGXEbx0e_A9XJc20PW7c1mErzzjD_I&callback=initMap">
-    </script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-
-</body>
-
+    <!-- Footer-->
+      <div class="footer">
+          <div class="container">
+              <p>DevelopmentIsland.com Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>.</p>
+          </div>
+      </div>
+      
+      <!--Spinner-->
+      <div id="spinner">
+         <img src='ajax-loader.gif' width="64" height="64" />
+         <br>Loading..
+      </div>
+      
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="map.js"></script>  
+    <script src="javascript.js"></script>
+  </body>
 </html>
