@@ -19,6 +19,7 @@ $invalidPhoneNumber = '<p><strong>Please enter a valid phone number (digits only
 $invalidEmail = '<p><strong>Please enter a valid email address!</strong></p>';
 $missinggender = '<p><strong>Please select your gender</strong></p>';
 $missinginformaton = '<p><strong>Please share a few more words about yourself.</strong></p>';
+$errors="";
 //    <!--Get username, email, password, password2-->
 //Get username
 if(empty($_POST["username"])){
@@ -146,7 +147,7 @@ if(!$result){
 
 //Send the user an email with a link to activate.php with their email and activation code
 $message = "Please click on this link to activate your account:\n\n";
-$message .= "http://localhost/15. Car Share/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+$message .= "http://localhost/demo/activate.php?email=" . urlencode($email) . "&key=$activationKey";
 //$message .= "http://carsharingwebsitefinal.thecompletewebhosting.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
 if(mail($email, 'Confirm your Registration', $message)){
        echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";

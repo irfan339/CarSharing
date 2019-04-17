@@ -3,57 +3,51 @@ html{
     min-height: 100%;
 }
 
-/*Background Image*/
-body{
-    font-family: Arvo, serif;
-    background: url("road-in-scotland.jpg") no-repeat center center;
-    background-attachment: fixed;
-    background-size: cover;
+body {
+  padding-top: 56px;
+  background: url("images/road-in-scotland.jpg") no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
-
-/*Style Jumbotron*/
-.jumbotron{
-    background-color: transparent;
+.footerclass{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:#262626;
+  color: white;
+  text-align: center;
+}
+.myheading{
+    font-size:3em;
+    color:#FDBF2D;
+}
+#mycontainer
+{
+    margin-top: 50px;
     text-align: center;
-    letter-spacing: 2.5px;
-    padding: 10px;
-    margin-top: 150px;
 }
 
-/*buttons*/
-.signup{
-    margin-top: 50px;   
+.save{
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
-.green{
-    background-color: rgba(114,190,35,0.8);   
-}
-
-.green:hover{
-    background-color: rgb(114,190,35);   
+input[type="text"] {
+	min-width: 2rem;
 }
 
 
-/*Style the footer*/
-.footer{
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-    padding-top: 10px;
-}
-
-/*Navigation bar*/
-.navbar-custom, .footer {
-  background-color: #4fa1b3;
-  border-color: #448d9d;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#73b4c2), to(#4fa1b3));
-  background-image: -webkit-linear-gradient(top, #73b4c2, 0%, #4fa1b3, 100%);
-  background-image: -moz-linear-gradient(top, #73b4c2 0%, #4fa1b3 100%);
-  background-image: linear-gradient(to bottom, #73b4c2 0%, #4fa1b3 100%);
+.navbar-custom {
+  background-color: #454140;
+  border-color: #343130;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#5f5a59), to(#454140));
+  background-image: -webkit-linear-gradient(top, #5f5a59, 0%, #454140, 100%);
+  background-image: -moz-linear-gradient(top, #5f5a59 0%, #454140 100%);
+  background-image: linear-gradient(to bottom, #5f5a59 0%, #454140 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff73b4c2', endColorstr='#ff4fa1b3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5f5a59', endColorstr='#ff454140', GradientType=0);
 }
 .navbar-custom .navbar-brand {
   color: #ffffff;
@@ -67,11 +61,11 @@ body{
   color: #ffffff;
 }
 .navbar-custom .navbar-nav > li:last-child > a {
-  border-right: 1px solid #448d9d;
+  border-right: 1px solid #343130;
 }
 .navbar-custom .navbar-nav > li > a {
   color: #ffffff;
-  border-left: 1px solid #448d9d;
+  border-left: 1px solid #343130;
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
@@ -82,13 +76,13 @@ body{
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
   color: #c0c0c0;
-  background-color: #448d9d;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#448d9d), to(#5ba8b8));
-  background-image: -webkit-linear-gradient(top, #448d9d, 0%, #5ba8b8, 100%);
-  background-image: -moz-linear-gradient(top, #448d9d 0%, #5ba8b8 100%);
-  background-image: linear-gradient(to bottom, #448d9d 0%, #5ba8b8 100%);
+  background-color: #343130;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#343130), to(#4e4a49));
+  background-image: -webkit-linear-gradient(top, #343130, 0%, #4e4a49, 100%);
+  background-image: -moz-linear-gradient(top, #343130 0%, #4e4a49 100%);
+  background-image: linear-gradient(to bottom, #343130 0%, #4e4a49 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff448d9d', endColorstr='#ff5ba8b8', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff343130', endColorstr='#ff4e4a49', GradientType=0);
 }
 .navbar-custom .navbar-nav > .disabled > a,
 .navbar-custom .navbar-nav > .disabled > a:hover,
@@ -108,7 +102,7 @@ body{
 }
 .navbar-custom .navbar-collapse,
 .navbar-custom .navbar-form {
-  border-color: #438b9b;
+  border-color: #32302f;
 }
 .navbar-custom .navbar-nav > .dropdown > a:hover .caret,
 .navbar-custom .navbar-nav > .dropdown > a:focus .caret {
@@ -118,7 +112,7 @@ body{
 .navbar-custom .navbar-nav > .open > a,
 .navbar-custom .navbar-nav > .open > a:hover,
 .navbar-custom .navbar-nav > .open > a:focus {
-  background-color: #448d9d;
+  background-color: #343130;
   color: #c0c0c0;
 }
 .navbar-custom .navbar-nav > .open > a .caret,
@@ -144,7 +138,7 @@ body{
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #c0c0c0;
-    background-color: #448d9d;
+    background-color: #343130;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,

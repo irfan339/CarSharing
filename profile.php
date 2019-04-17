@@ -114,7 +114,7 @@ if($count == 1){
                       <li><a href="#">
                             <?php
                                 if(empty($picture)){
-                                    echo "<div class='image_preview'  data-target='#updatepicture' data-toggle='modal'><img class='previewing2' src='profilepicture/noimage.jpg' /></div>";
+                                    echo "<div class='image_preview'  data-target='#updatepicture' data-toggle='modal'><img class='previewing2' src='profilepicture/noimage.png' /></div>";
                                 }else{
                                     echo "<div class='image_preview' data-target='#updatepicture' data-toggle='modal'><img class='previewing2' src='$picture' /></div>";
                                 }
@@ -294,7 +294,7 @@ if($count == 1){
                   <div id="updatepicturemessage"></div>
                   <?php
                     if(empty($picture)){
-                        echo "<div class='image_preview'><img id='previewing' src='profilepicture/noimage.jpg' /></div>";
+                        echo "<div class='image_preview'><img id='previewing' src='profilepicture/noimage.png' /></div>";
                     }else{
                         echo "<div class='image_preview'><img id='previewing' src='$picture' /></div>";
                     }
@@ -320,12 +320,15 @@ if($count == 1){
       </div>
       </div>
       </form>
-    <!-- Footer-->
-      <div class="footer">
-          <div class="container">
-              <p>DevelopmentIsland.com Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>.</p>
-          </div>
-      </div>
+
+      <!-------Footer------>    
+    
+<footer class="footerclass">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;Car Sharing 2019</p>
+        </div>
+    </footer>
+      
       <!--Spinner-->
       <div id="spinner">
          <img src='ajax-loader.gif' width="64" height="64" />

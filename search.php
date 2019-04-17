@@ -8,6 +8,7 @@ $missingdeparture = '<p><strong>Please enter your departure!</strong></p>';
 $invaliddeparture = '<p><strong>Please enter a valid departure!</strong></p>';
 $missingdestination = '<p><strong>Please enter your destination!</strong></p>';
 $invaliddestination = '<p><strong>Please enter a valid destination!</strong></p>';
+$errors="";
 
 //Get inputs:
 $departure = $_POST["departure"];
@@ -29,7 +30,7 @@ if(!isset($_POST["destinationLatitude"]) or !isset($_POST["destinationLongitude"
 }
 
 //set search radius
-$searchRadius = 10;
+$searchRadius = 20;
 
 //min max Departure Longitude
 $deltaLongitudeDeparture = $searchRadius*360/(24901*cos(deg2rad($departureLatitude)));
@@ -165,7 +166,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             $row2 = mysqli_fetch_array($result2);
             
             //Get phone number:
-            if($_SESSION['user_id']){
+            if(isset($_SESSION['user_id'])){
              $phonenumber = $row2['phonenumber'];   
             }else{
              $phonenumber = "Please sign up! Only members have access to contact information.";   

@@ -32,7 +32,7 @@ include('remember.php');
           
           /*header size*/
           #myContainer h1{
-              font-size: 5em;
+              font-size: 3.5em;
           }
           
           .bold{
@@ -62,15 +62,15 @@ include('remember.php');
             margin-bottom: 100px;   
           }
           .driver{
-            font-size:1.5em;
+            font-size:1em;
             text-transform:capitalize;
             text-align: center;
           }
           .price{
-            font-size:1.5em;
+            font-size:1.25em;
           }
           .departure, .destination{
-            font-size:1.5em;
+            font-size:1.25em;
           }
           .perseat{
             font-size:0.5em;
@@ -104,11 +104,11 @@ include('remember.php');
           }
           .journeysummary{
             text-align:left; 
-            font-size:1.5em;
+            font-size:1.25em;
           }
           .noresults{
             text-align:center;  
-            font-size:1.5em;
+            font-size:1.25em;
           }
           
           .previewing{
@@ -139,9 +139,7 @@ include('remember.php');
           <div class="row">
               <div class="col-md-6 col-md-offset-3">
                   <h1>Plan your next trip now!</h1>
-                  <p class="lead">Save Money! Save the Environment!</p>
-                  <p class="bold">You can save up to 3000$ a year using car sharing!
-                  </p>
+                  <p class="bold">Save Money! Save the Environment!</p>
                   <!--Search Form-->
                   <form class="form-inline" method="get" id="searchform">
                       <div class="form-group">
@@ -152,20 +150,15 @@ include('remember.php');
                           <label class="sr-only"></label>
                           <input type="text" class="form-control" id="destination" placeholder="Destination" name="destination">
                       </div>
-                      <input type="submit" value="Search" class="btn btn-lg green" name="search">
+                      <input type="submit" value="Search" class="btn btn-success" name="search">
                   
                   </form>
-                  <!--Search Form End-->
+                
+                 <!--Search Form End-->
                   
                   <!--Google Map-->
                   <div id="googleMap"></div>
                   
-                  <!--Sign up button-->
-                  <?php
-                  if(!isset($_SESSION["user_id"])){
-                      echo '<button type="button" class="btn btn-lg green signup" data-toggle="modal" data-target="#signupModal">Sign up-It\'s free</button>';
-                  }
-                  ?>
                   <div id="results">
                     <!--will be filled with Ajax Call-->
                 </div>
@@ -215,11 +208,11 @@ include('remember.php');
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="login" type="submit" value="Login">
+                  <input class="btn btn-success" name="login" type="submit" value="Login">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
                   Register
                 </button>  
               </div>
@@ -284,7 +277,7 @@ include('remember.php');
                   </div>
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="signup" type="submit" value="Sign up">
+                  <input class="btn btn-success" name="signup" type="submit" value="Sign up">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
@@ -319,11 +312,11 @@ include('remember.php');
                   </div>
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="forgotpassword" type="submit" value="Submit">
+                  <input class="btn btn-success" name="forgotpassword" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button>
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
+                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
                   Register
                 </button>  
               </div>
@@ -331,12 +324,14 @@ include('remember.php');
       </div>
       </div>
       </form>
-    <!-- Footer-->
-      <div class="footer">
-          <div class="container">
-              <p>DevelopmentIsland.com Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>.</p>
-          </div>
-      </div>
+
+      <!-------Footer------>    
+    
+<footer class="footerclass">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;Car Sharing 2019</p>
+        </div>
+    </footer>
       
       <!--Spinner-->
       <div id="spinner">

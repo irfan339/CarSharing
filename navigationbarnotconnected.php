@@ -1,4 +1,5 @@
-<nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
+ <!-- Navigation -->
+<nav role="navigation" class="navbar navbar-custom navbar-expand-lg navbar-fixed-top">
       
           <div class="container-fluid">
             
@@ -15,12 +16,13 @@
               </div>
               <div class="navbar-collapse collapse" id="navbarCollapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Search</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="#">Contact us</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#loginModal" data-toggle="modal">Login</a></li>
+                    <li><a href="#signupModal" data-toggle="modal"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                    <li><a href="#loginModal" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
                   </ul>
               
               </div>

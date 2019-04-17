@@ -40,7 +40,7 @@ if($result = mysqli_query($link, $sql)){
                         <div class="seatsavailable">'.$row['seatsavailable'].' left</div>
                     </div>
                     <div class="col-sm-2">
-                        <button class= "btn green edit btn-lg" data-target="#edittripModal" data-toggle="modal" data-trip_id="'.$row['trip_id'].'">Edit</button>
+                        <button class= "btn edit btn-warning" data-target="#edittripModal" data-toggle="modal" data-trip_id="'.$row['trip_id'].'">Edit</button>
                     </div>
                 </div>';
         }

@@ -42,51 +42,16 @@ if($count == 1){
       <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAZnZGXEbx0e_A9XJc20PW7c1mErzzjD_I"></script>
       <style>
         #container{
-            margin-top:120px;   
+            margin-top:60px;   
         }
 
-        #notePad, #allNotes, #done, .delete{
-            display: none;   
-        }
-
-        textarea{
-            width: 100%;
-            max-width: 100%;
-            font-size: 16px;
-            line-height: 1.5em;
-            border-left-width: 20px;
-            border-color: #CA3DD9;
-            color: #CA3DD9;
-            background-color: #FBEFFF;
-            padding: 10px;
-              
-        }
+         body{
+    font-family: Arvo, serif;
+    background: url("images/Yeni_-Y%C4%B1lda_Az_Masrafl%C4%B1_-Bol_Keyifli_Yolculu%C4%9Fun_-Adresi_-BlaBlaCar.jpg") no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
         
-        .noteheader{
-            border: 1px solid grey;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            padding: 0 10px;
-            background: linear-gradient(#FFFFFF,#ECEAE7);
-        }
-          
-        .text{
-            font-size: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-          
-        .timetext{
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        .notes{
-            margin-bottom: 100px;
-        }
-          
         #googleMap{
             width: 300px;
             height: 200px;
@@ -117,7 +82,7 @@ if($count == 1){
             border:1px solid grey;
             border-radius: 10px;
             margin-bottom:10px;
-            background: linear-gradient(#ECE9E6, #FFFFFF);
+            background: linear-gradient(white, white);
             padding: 10px;
         }
         .price{
@@ -204,7 +169,7 @@ if($count == 1){
           <div class="row">
               <div class="col-sm-8 col-sm-offset-2">
                   <div>
-                      <button type="button" class="btn green btn-lg" data-target="#addtripModal" data-toggle="modal">
+                      <button type="button" class="btn btn-warning" data-target="#addtripModal" data-toggle="modal">
                           Add trips
                       </button>
                   </div>
@@ -349,12 +314,13 @@ if($count == 1){
       </div>
       </form>
 
-    <!-- Footer-->
-      <div class="footer">
-          <div class="container">
-              <p>DevelopmentIsland.com Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>.</p>
-          </div>
-      </div>
+       <!-------Footer------>    
+    
+<footer class="footerclass">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;Car Sharing 2019</p>
+        </div>
+    </footer>
       
       <!--Spinner-->
       <div id="spinner">
@@ -364,6 +330,7 @@ if($count == 1){
 
 
     <script src="map.js"></script>  
-    <script src="mytrips.js"></script>  
+    <script src="mytrips.js"></script>
+     
   </body>
 </html>

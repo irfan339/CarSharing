@@ -16,6 +16,7 @@ $missingfrequency = '<p><strong>Please select a frequency!</strong></p>';
 $missingdays = '<p><strong>Please select at least one weekday!</strong></p>';
 $missingdate = '<p><strong>Please choose a date for your trip!</strong></p>';
 $missingtime = '<p><strong>Please choose a time for your trip!</strong></p>';
+$errors="";
 
 //Get inputs:
 $departure = $_POST["departure"];
@@ -25,13 +26,14 @@ $seatsavailable = $_POST["seatsavailable"];
 $regular = $_POST["regular"];
 $date = $_POST["date"];
 $time = $_POST["time"];
-$monday = $_POST["monday"];
-$tuesday = $_POST["tuesday"];
-$wednesday = $_POST["wednesday"];
-$thursday = $_POST["thursday"];
-$friday = $_POST["friday"];
-$saturday = $_POST["saturday"];
-$sunday = $_POST["sunday"];
+$monday = (isset($_POST['monday']) ? $_POST['monday'] : '');
+$tuesday = (isset($_POST['$tuesday']) ? $_POST['$tuesday'] : '');
+$wednesday = (isset($_POST['wednesday']) ? $_POST['wednesday'] : '');
+$thursday = (isset($_POST['thursday']) ? $_POST['thursday'] : '');
+$friday = (isset($_POST['friday']) ? $_POST['friday'] : '');
+$saturday = (isset($_POST['saturday']) ? $_POST['saturday'] : '');
+$sunday = (isset($_POST['sunday']) ? $_POST['sunday'] : '');
+
 
 //check coordinates
 if(!isset($_POST["departureLatitude"]) or !isset($_POST["departureLongitude"])){
