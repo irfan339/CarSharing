@@ -28,8 +28,8 @@ $fileTooLarge = "<p><strong>You can only upload files smaller than 3Mo!</strong>
 
 
 //file details
-$extension = pathinfo($name, PATHINFO_EXTENSION);
 $name = $_FILES["picture"]["name"];
+$extension = pathinfo($name, PATHINFO_EXTENSION);
 $type = $_FILES["picture"]["type"];
 $size = $_FILES["picture"]["size"];
 $fileerror = $_FILES["picture"]["error"];
@@ -37,7 +37,7 @@ $tmp_name = $_FILES["picture"]["tmp_name"];
 
 //allowed formats to upload
 $allowedFormats = array("jpeg"=>"image/jpeg", "jpg"=>"image/jpg", "png"=>"image/png");
-
+$errors="";
 
 //check for errors
 if($fileerror == 4){

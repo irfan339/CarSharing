@@ -14,7 +14,7 @@ $result = mysqli_query($link, $sql);
 $count = mysqli_num_rows($result);
 
 if($count == 1){
-    $row = mysqli_fetch_array($result, MYSQL_ASSOC); 
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
     $username = $row['username'];
     $email = $row['email']; 
     $picture = $row['profilepicture'];
@@ -106,7 +106,6 @@ if($count == 1){
                   <ul class="nav navbar-nav">
                     <li><a href="index.php">Search</a></li>  
                     <li class="active"><a href="#">Profile</a></li>
-                    <li><a href="#">Help</a></li>
                     <li><a href="#">Contact us</a></li>
                       <li><a href="mainpageloggedin.php">My Trips</a></li>
                   </ul>
@@ -123,7 +122,7 @@ if($count == 1){
                           </a>
                       </li>
                       <li><a href="#"><b><?php echo $username; ?></b></a></li>
-                    <li><a href="index.php?logout=1">Log out</a></li>
+                    <li><a href="logout.php?logout=1">Log out</a></li>
                   </ul>
               
               </div>
@@ -185,7 +184,7 @@ if($count == 1){
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="updateusername" type="submit" value="Submit">
+                  <input class="btn btn-success" name="updateusername" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button> 
@@ -221,7 +220,7 @@ if($count == 1){
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="updateusername" type="submit" value="Submit">
+                  <input class="btn btn-success" name="updateusername" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button> 
@@ -265,7 +264,7 @@ if($count == 1){
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="updateusername" type="submit" value="Submit">
+                  <input class="btn btn-success" name="updateusername" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button> 
@@ -311,7 +310,7 @@ if($count == 1){
                   
               </div>
               <div class="modal-footer">
-                  <input class="btn green" name="updatepicture" type="submit" value="Submit">
+                  <input class="btn btn-success" name="updatepicture" type="submit" value="Submit">
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                   Cancel
                 </button> 

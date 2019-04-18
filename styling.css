@@ -20,7 +20,7 @@ body {
 }
 .myheading{
     font-size:3em;
-    color:#FDBF2D;
+    color:black;
 }
 #mycontainer
 {
@@ -29,9 +29,9 @@ body {
 }
 
 .save{
-    color: white;
+    color: black;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
 input[type="text"] {

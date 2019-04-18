@@ -3,7 +3,7 @@ session_start();
 include('connection.php');
 
 //logout
-include('logout.php');
+//include('logout.php');
 
 //remember me
 include('remember.php');
@@ -129,7 +129,7 @@ include('remember.php');
     <!--Navigation Bar-->  
     <?php
     if(isset($_SESSION["user_id"]) && !empty($_SESSION['user_id']) ){
-        include("mainpageloggedin.php");
+        include("navigationbarconnected.php");
     }else{
         include("navigationbarnotconnected.php");
     }  
@@ -138,7 +138,7 @@ include('remember.php');
       <div class="container-fluid" id="myContainer">
           <div class="row">
               <div class="col-md-6 col-md-offset-3">
-                  <h1>Plan your next trip now!</h1>
+                  <h1 class="myheading">Plan your next trip now!</h1>
                   <p class="bold">Save Money! Save the Environment!</p>
                   <!--Search Form-->
                   <form class="form-inline" method="get" id="searchform">

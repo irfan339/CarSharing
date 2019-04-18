@@ -1,5 +1,5 @@
 //set map options
-var myLatLng = {lat: 51.5, lng: -0.1};
+var myLatLng = {lat: 12.9716, lng: 77.5946};
 var mapOptions = {
     center: myLatLng,
     zoom: 10,
