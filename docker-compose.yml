@@ -1,0 +1,25 @@
+--- 
+services: 
+  database: 
+    image: mysql:5.7
+    environment: 
+      MYSQL_DATABASE: carshare_database
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root   
+    ports: 
+      - "8002:3306"
+    restart: always
+    volumes: 
+      - container-volume:/var/lib/mysql
+      - ./sqlscripts/tables.sql:/docker-entrypoint-initdb.d/tables.sql
+  javaserver: 
+    build: 
+      context: "."
+    depends_on: 
+      - database
+    ports: 
+      - "8001:80"
+    restart: always
+version: "3.7"
+volumes: 
+  container-volume:
