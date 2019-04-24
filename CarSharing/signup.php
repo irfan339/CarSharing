@@ -137,20 +137,24 @@ $activationKey = bin2hex(openssl_random_pseudo_bytes(16));
     //32 characters
 
 //Insert user details and activation code in the users table
-
+$activationKey ="activated";
 $sql = "INSERT INTO users (`username`, `email`, `password`, `activation`, `first_name`, `last_name`, `phonenumber`, `gender`, `moreinformation`) VALUES ('$username', '$email', '$password', '$activationKey', '$firstname', '$lastname', '$phonenumber', '$gender', '$moreinformation')";
 $result = mysqli_query($link, $sql);
 if(!$result){
     echo '<div class="alert alert-danger">There was an error inserting the users details in the database!</div>'; 
     exit;
 }
-
-//Send the user an email with a link to activate.php with their email and activation code
-$message = "Please click on this link to activate your account:\n\n";
-$message .= "http://localhost/CarSharing/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-//$message .= "http://carsharingwebsitefinal.thecompletewebhosting.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
-if(mail($email, 'Confirm your Registration', $message)){
-       echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+else 
+{
+	echo "<div class='alert alert-success'>Thank for your registring!. You can now log in into your account.</div>";
 }
+//Send the user an email with a link to activate.php with their email and activation code
+//$message = "Please click on this link to activate your account:\n\n";
+//$message .= "http://localhost/CarSharing/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+//$message .= "http://carsharingwebsitefinal.thecompletewebhosting.com/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+//if(mail($email, 'Confirm your Registration', $message))
+//{
+//       echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";
+//}
         
         ?>
