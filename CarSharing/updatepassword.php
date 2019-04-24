@@ -10,6 +10,7 @@ $missingPassword = '<p><strong>Please enter a new Password!</strong></p>';
 $invalidPassword = '<p><strong>Your password should be at least 6 characters long and inlcude one capital letter and one number!</strong></p>';
 $differentPassword = '<p><strong>Passwords don\'t match!</strong></p>';
 $missingPassword2 = '<p><strong>Please confirm your password</strong></p>';
+$errors="";
 
 //check for errors
 if(empty($_POST["currentpassword"])){

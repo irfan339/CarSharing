@@ -179,7 +179,7 @@ if($count == 1){
                       <li><a href="#">
                     <?php
                         if(empty($picture)){
-                            echo "<div class='image_preview'><img class='previewing2' src='profilepicture/noimage.jpg' /></div>";
+                            echo "<div class='image_preview'><img class='previewing2' src='profilepicture/noimage.png' /></div>";
                         }else{
                             echo "<div class='image_preview'><img class='previewing2' src='$picture' /></div>";
                         }
