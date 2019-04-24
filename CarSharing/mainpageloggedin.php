@@ -349,11 +349,12 @@ if($count == 1){
       </form>
 
     <!-- Footer-->
-      <div class="footer">
-          <div class="container">
-              <p>DevelopmentIsland.com Copyright &copy; 2015-<?php $today = date("Y"); echo $today?>.</p>
-          </div>
-      </div>
+	<footer class="footerclass">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy;Car Sharing 2019</p>
+        </div>
+    </footer>
+
       
       <!--Spinner-->
       <div id="spinner">
