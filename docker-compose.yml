@@ -15,6 +15,10 @@ services:
   javaserver: 
     build: 
       context: "."
+    # logging:
+    #   driver: syslog
+    #   options:
+    #     syslog-address: "tcp://localhost:5000"
     depends_on: 
       - database
     ports: 
