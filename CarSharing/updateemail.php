@@ -23,7 +23,7 @@ $result = mysqli_query($link, $sql);
 $count = mysqli_num_rows($result);
 
 if($count == 1){
-    $row = mysqli_fetch_array($result, MYSQL_ASSOC); 
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
     $email = $row['email']; 
 }else{
     echo "<div class='alert alert-danger'>There was an error retrieving the email from the database</div>";exit;   
