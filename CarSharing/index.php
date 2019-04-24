@@ -231,7 +231,7 @@ include('remember.php');
                     &times;
                   </button>
                   <h4 id="myModalLabel">
-                    Sign up today and Start using our Online Notes App! 
+                    Sign up today and Start using our CarSharing App! 
                   </h4>
               </div>
               <div class="modal-body">

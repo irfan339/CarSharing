@@ -33,45 +33,45 @@ if(!isset($_POST["destinationLatitude"]) or !isset($_POST["destinationLongitude"
 $searchRadius = 20;
 
 //min max Departure Longitude
-$deltaLongitudeDeparture = $searchRadius*360/(24901*cos(deg2rad($departureLatitude)));
-$minLongitudeDeparture = $departureLongitude - $deltaLongitudeDeparture;
+@$deltaLongitudeDeparture = $searchRadius*360/(24901*cos(deg2rad($departureLatitude)));
+@$minLongitudeDeparture = $departureLongitude - $deltaLongitudeDeparture;
 if($minLongitudeDeparture < -180){
     $minLongitudeDeparture += 360;
 }
-$maxLongitudeDeparture = $departureLongitude + $deltaLongitudeDeparture;
+@$maxLongitudeDeparture = $departureLongitude + $deltaLongitudeDeparture;
 if($maxLongitudeDeparture > 180){
     $maxLongitudeDeparture -= 360;
 }
 
 //min max Destination Longitude
-$deltaLongitudeDestination = $searchRadius*360/(24901*cos(deg2rad($destinationLatitude)));
-$minLongitudeDestination = $destinationLongitude - $deltaLongitudeDestination;
+@$deltaLongitudeDestination = $searchRadius*360/(24901*cos(deg2rad($destinationLatitude)));
+@$minLongitudeDestination = $destinationLongitude - $deltaLongitudeDestination;
 if($minLongitudeDestination < -180){
     $minLongitudeDestination += 360;
 }
-$maxLongitudeDestination = $destinationLongitude + $deltaLongitudeDestination;
+@$maxLongitudeDestination = $destinationLongitude + $deltaLongitudeDestination;
 if($maxLongitudeDestination > 180){
     $maxLongitudeDestination -= 360;
 }
 
 //min max Departure Latitude
-$deltaLatitudeDeparture = $searchRadius*180/12430;
-$minLatitudeDeparture = $departureLatitude - $deltaLatitudeDeparture;
+@$deltaLatitudeDeparture = $searchRadius*180/12430;
+@$minLatitudeDeparture = $departureLatitude - $deltaLatitudeDeparture;
 if($minLatitudeDeparture < -90){
     $minLatitudeDeparture = -90;
 }
-$maxLatitudeDeparture = $departureLatitude + $deltaLatitudeDeparture;
+@$maxLatitudeDeparture = $departureLatitude + $deltaLatitudeDeparture;
 if($maxLatitudeDeparture > 90){
     $maxLatitudeDeparture = 90;
 }
 
 //min max Destination Latitude
 $deltaLatitudeDestination = $searchRadius*180/12430;
-$minLatitudeDestination = $destinationLatitude - $deltaLatitudeDestination;
+@$minLatitudeDestination = $destinationLatitude - $deltaLatitudeDestination;
 if($minLatitudeDestination < -90){
     $minLatitudeDestination = -90;
 }
-$maxLatitudeDestination = $destinationLatitude + $deltaLatitudeDestination;
+@$maxLatitudeDestination = $destinationLatitude + $deltaLatitudeDestination;
 if($maxLatitudeDestination > 90){
     $maxLatitudeDestination = 90;
 }
