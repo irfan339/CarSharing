@@ -138,7 +138,7 @@ include('remember.php');
       <div class="container-fluid" id="myContainer">
           <div class="row">
               <div class="col-md-6 col-md-offset-3">
-                  <h1 class="myheading">Plan your next trip now!</h1>
+                  <h1 class="myheading">Plan your next trip now</h1>
                   <p class="bold">Save Money! Save the Environment!</p>
                   <!--Search Form-->
                   <form class="form-inline" method="get" id="searchform">
